@@ -172,3 +172,112 @@ class MeuComponente extends React.Component {
 ReactDOM.render(<MeuComponente/>, document.getElementById('root')) */
 
 
+/* AULA 9 - Arrow Function 
+
+// Importar módulos
+import React from "react";
+import  ReactDOM  from "react-dom";
+
+// Componente
+class MeuComponente extends React.Component {
+
+    // Função 
+    mensagem(nome){
+        alert('Olá ' + nome)
+        console.log(this)
+    }
+
+    arrowFunction = (curso) => {
+        alert('Estou fazendo o curso de ' + curso)
+        console.log(this)
+    }
+
+    // Função Render
+    render(){
+        return (
+            <div>
+        <button onClick={this.mensagem.bind(this, 'Camilly')}>Clique aqui</button>
+        <button onClick={() => this.arrowFunction('ReactJS')}> Arrow Function</button>
+        </div>
+        )
+    }
+}
+
+// Render
+ReactDOM.render(<MeuComponente/>, document.getElementById('root')) */
+
+
+/* AULA 10 - Evento onChange 
+
+// Importar módulos
+import React from "react";
+import  ReactDOM  from "react-dom";
+
+// Componente
+class MeuComponente extends React.Component {
+
+    // Função 
+    mensagem(nome){
+        alert('Olá ' + nome)
+        console.log(this)
+    }
+
+    arrowFunction = (curso) => {
+        alert('Estou fazendo o curso de ' + curso)
+        console.log(this)
+    }
+
+    teclado = (obj) => {
+        console.log(obj.target.value)
+    }
+
+    // Função Render
+    render(){
+        return (
+            <div>
+        <button onClick={this.mensagem.bind(this, 'Camilly')}>Clique aqui</button>
+        <button onClick={() => this.arrowFunction('ReactJS')}> Arrow Function</button>
+        <hr/>
+        <input type="text" onChange={this.teclado}/>
+        </div>
+        )
+    }
+}
+
+// Render
+ReactDOM.render(<MeuComponente/>, document.getElementById('root')) */
+
+
+/* AULA 11 - Exercícios */
+
+// Importar Módulos
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+// Componente
+class MeuComponente extends React.Component {
+    // Contrutor
+    constructor(props){
+        super(props)
+
+        this.state = {texto: this.props.textoInicial}
+    }
+
+    // Função
+    minhaFuncao = (elemento) => {
+        this.setState({texto: elemento.target.value})
+    }
+
+    // Função Render
+    render(){
+        return(
+            <div>
+                <h1>{this.state.texto}</h1>
+                <input type='text' onChange={this.minhaFuncao} value={this.state.texto}/>
+            </div>
+        )
+    }
+}
+
+// Render
+ReactDOM.render(<MeuComponente textoInicial="Digite algo..."/>, document.getElementById('root'))
