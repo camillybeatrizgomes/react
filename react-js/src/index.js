@@ -248,7 +248,7 @@ class MeuComponente extends React.Component {
 ReactDOM.render(<MeuComponente/>, document.getElementById('root')) */
 
 
-/* AULA 11 - Exercícios */
+/* AULA 11 - Exercícios 
 
 // Importar Módulos
 import React from 'react'
@@ -280,4 +280,301 @@ class MeuComponente extends React.Component {
 }
 
 // Render
-ReactDOM.render(<MeuComponente textoInicial="Digite algo..."/>, document.getElementById('root'))
+ReactDOM.render(<MeuComponente textoInicial="Digite algo..."/>, document.getElementById('root')) */
+
+
+/* AULA 12 -  Condicionais (If/Else) 
+
+// Importar Módulos
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+class Componente extends React.Component {
+    // Construtor
+    constructor(props){
+        super(props)
+
+        this.state = {exibir : false}
+    }
+
+    // Função 
+    alterarState = () => {
+        let converter = !this.state.exibir
+        this.setState({exibir : converter})
+    }
+
+    // Render
+    render(){
+        // Condicional 
+        let meuTexto = '';
+        if(this.state.exibir === true){
+            meuTexto = <h1>Olá!!! Utilizando Condicionais</h1>
+        } else {
+            meuTexto = '';
+        }
+
+        return (
+            <div>
+                {meuTexto}
+                <button onClick={this.alterarState}>Clique aqui</button>
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<Componente/>, document.getElementById('root')) */
+
+
+/* AULA 13 - Listas e Chaves 
+
+// Importar Módulos
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+// Componente
+class Componente extends React.Component {
+
+    render(){
+        // Vetor
+        let cores = ['Azul','Amarelo','Vermelho','Verde']
+        // Função Listar
+        let listar = cores.map((cor, index) => {
+            return <li key={index}>{index} - {cor}</li>
+            // Chave key
+        });
+
+        return(
+            <ul>
+                {listar}
+            </ul>
+        )
+    }
+
+}
+// Render
+ReactDOM.render(<Componente/>, document.getElementById('root')) */
+
+
+/* AULA 14 - CSS 
+
+// Importar Módulos
+import React from 'react'
+import ReactDOM from 'react-dom'
+// Importando CSS
+import './estilos.css'
+
+// Componente
+class Componente extends React.Component {
+
+    render(){
+
+        const estilo = {
+            color: 'blue',
+            borderBottom: 'solid 5px green'
+        }
+        return(
+            <div>
+                <h1 style={{color:'red', backgroundColor:'yellow'}}>CSS interno</h1>
+                <h1 style={estilo}>CSS através de variáveis e constantes</h1>
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<Componente/>, document.getElementById('root')) */
+
+
+/* AULA 14 - Utilizando className 
+
+// Importar Módulos
+import React from 'react'
+import ReactDOM from 'react-dom'
+// Importando CSS
+import './estilos.css'
+
+// Componente
+class Componente extends React.Component {
+
+    render(){
+
+        const estilo = {
+            color: 'blue',
+            borderBottom: 'solid 5px green'
+        }
+        return(
+            <div>
+                <h1 style={{color:'red', backgroundColor:'yellow'}}>CSS interno</h1>
+                <h1 style={estilo}>CSS através de variáveis e constantes</h1>
+                <h1 className='minhaClasse'>CSS através de classes</h1>
+            </div>
+        )
+    }
+}
+
+ReactDOM.render(<Componente/>, document.getElementById('root')) */
+
+
+/* AULA 15 - Ciclo de vida (Lifecycle) 
+
+// Importar Módulos
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+class Componente extends React.Component {
+    // Construtor 
+    constructor(props){
+        super(props)
+
+        this.state = {cor : 'Vermelho'}
+    }
+
+    // Depois de realizar o render
+    componentDidMount(){
+        setTimeout(() => {
+            this.setState({cor : 'Azul'})
+        }, 2000)
+    }
+
+    render(){
+        return <h1>Minha cor preferida é {this.state.cor}</h1>
+    }
+    
+}
+
+ReactDOM.render(<Componente/>, document.getElementById('root')) */
+
+
+/* AULA 16 - Evento onSubmit 
+
+// Importar Módulos
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+class Componente extends React.Component {
+
+    minhaFuncao = () => {
+        alert('Testando evento onSubmit')
+    }
+
+    render(){
+        return (
+            <form onSubmit={this.minhaFuncao}>
+                <input type='submit'/>
+            </form>
+        )
+    }
+
+}
+
+ReactDOM.render(<Componente/>, document.getElementById('root')); */
+
+
+/* AULA 17 - Função preventDefault() 
+
+// Importar Módulos
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+class Componente extends React.Component {
+
+    minhaFuncao = (elemento) => {
+        elemento.preventDefault()
+        alert('Testando evento onSubmit')
+    }
+
+    render(){
+        return (
+            <form onSubmit={this.minhaFuncao} action='http://www.youtube.com'>
+                <input type='submit'/>
+            </form>
+        )
+    }
+
+}
+
+ReactDOM.render(<Componente/>, document.getElementById('root')); */
+
+
+/*AULA 18 - Manipulando elementos de formulário 
+
+// Importar Módulos
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+class Componente extends React.Component {
+
+    constructor(props){
+        super(props)
+
+        this.state = {
+            nome : '',
+            idade : null
+        }
+    }
+
+    // Função
+    funcaoNome = (campo) => {
+        this.setState({nome : campo.target.value})
+    }
+
+    funcaoIdade = (campo) => {
+        this.setState({idade : campo.target.value})
+    }
+
+    render(){
+        return (
+            <form>
+                <input type='text' placeholder='Nome'
+                onChange={this.funcaoNome}/>
+                <input type='number' placeholder='Idade'
+                onChange={this.funcaoIdade}/>
+
+                <p>{this.state.nome}</p>
+                <p>{this.state.idade}</p>
+            </form>
+        )
+    }
+}
+
+ReactDOM.render(<Componente/>, document.getElementById('root')) */
+
+
+/*AULA 18 - Manipulando elementos de formulário (Parte 2) 
+
+// Importar Módulos
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+class Componente extends React.Component {
+
+    constructor(props){
+        super(props)
+
+        this.state = {
+            nome : '',
+            idade : null
+        }
+    }
+
+    // Função
+    enviarParaState = (campo) => {
+        this.setState({[campo.target.name] : campo.target.value})
+    }
+
+
+    render(){
+        return (
+            <form>
+                <input type='text' placeholder='Nome' name='nome'
+                onChange={this.enviarParaState}/>
+                <input type='number' placeholder='Idade' name='idade'
+                onChange={this.enviarParaState}/>
+
+                <p>{this.state.nome}</p>
+                <p>{this.state.idade}</p>
+            </form>
+        )
+    }
+}
+
+ReactDOM.render(<Componente/>, document.getElementById('root')) */
